@@ -1,0 +1,8 @@
+<%= form_for @tweet do |f| %>
+   <%= f.label "Title:" %>
+   <%= f.text_field :title%></br>
+   <%= f.label "Tweet Message:"%>
+   <%= f.text_field :message%></br>
+   <%= f.submit "Edit" %>
+<% end %>
+   <%= link_to "Cancel", tweets_path %>
