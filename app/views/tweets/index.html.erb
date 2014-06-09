@@ -1,11 +1,29 @@
 <h1> Tweets Index </h1>
-
+<table class="table boarder">
 	<% @tweets.each do |tweet|%>
-	<li>
-		<b><%= tweet.title %></b> -	<%= tweet.message %>
-		<%= link_to "Delete", tweet_path(tweet), method: :delete   %>
-		<%= link_to "Edit", edit_tweet_path(tweet) %>
-	</li>
+		<% if tweet.user_id == current_user.id %>
+		<tr>
+			<td><b><%= tweet.title %></b></td>
+			<td> <%= tweet.message %>  </td> 
+			<td><%= link_to "Delete", tweet_path(tweet), method: :delete %></td> 
+			<td><%= link_to "Edit", edit_tweet_path(tweet) %></td>
+		</tr>
+		<% else %>
+		<tr> 
+		    <td><b><%= tweet.title %></b></td>
+		    <td><%= tweet.message %></td>
+		   
+		</tr>
+		<% end %>
 
 	<% end %>
-<%= link_to "New Tweet", new_tweet_path %>
+</table>
+
+</br><%= link_to "New Tweet", new_tweet_path %></br>
+ <%= form_tag tweets_path, :method => 'get' do %>
+      <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
+<%= will_paginate @tweets %>

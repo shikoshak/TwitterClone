@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	background-size: cover;
+	background-image: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRC9eFgdPM2RL86hVgaKFmWbAnKx06EDWoVbC5sExhhxxm3r2w9');
+}
+ .navbar {
+ 	background-color: #6CDCF8;
+ }
